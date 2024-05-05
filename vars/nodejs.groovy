@@ -17,7 +17,7 @@ def call() {
             stage('Lint CHeck') {
                 steps {
                     script {
-                        lintchecks
+                        lintchecks ()
                     }
                 }
             }
