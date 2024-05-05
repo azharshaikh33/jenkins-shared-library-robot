@@ -1,5 +1,6 @@
 def lintchecks() {
     sh '''
+            sh "echo lint checks for ${COMPONENT}"
             sh "echo Installing JSlist"
             sh "npm i jslint"
             sh "ls -ltr node_modules/jslint/bin/"
@@ -9,7 +10,7 @@ def lintchecks() {
     '''
 }
 
-def call(COMPONENT) {
+def call() {
     pipeline {
         agent any
         stages {
