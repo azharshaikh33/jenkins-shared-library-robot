@@ -12,7 +12,7 @@ def lintchecks() {
 
 def sonarchecks() {
     sh '''
-    sonar-scanner -Dsonar.host.url=http://172.31.17.108:9000 -Dsonar.sources=. -Dsonar.projectkey==${COMPONENT}
+    sonar-scanner -Dsonar.host.url=http://172.31.17.108:9000 -Dsonar.sources=. -Dsonar.projectkey==${COMPONENT} -Dsonar.login=admin -Dsonar.password=password
 
     '''
 }
