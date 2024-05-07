@@ -32,6 +32,9 @@ def call() {
                 steps {
                     script {
                         sonarchecks ()
+                    }
+                }
+            }
         }
     }
 }
