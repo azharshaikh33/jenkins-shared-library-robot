@@ -20,12 +20,14 @@ def call() {
             }
 
             stage('Prepare the artifacts') {
+                when { expression { env.TAG_NAME != null } }
                 steps {
                     sh "echo prepare the artifacts"
                 }
             }
 
             stage('Publish the artifacts') {
+                when { expression { env.TAG_NAME != null } }
                 steps {
                     sh "echo publish the artifacts"
                 }
