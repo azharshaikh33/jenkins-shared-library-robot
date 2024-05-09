@@ -18,6 +18,19 @@ def call() {
                     }
                 }
             }
+
+            stage('Prepare the artifacts') {
+                steps {
+                    sh "echo prepare the artifacts"
+                }
+            }
+
+            stage('Publish the artifacts') {
+                steps {
+                    sh "echo publish the artifacts"
+                }
+            }
+
         }
     }
 }
