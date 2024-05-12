@@ -2,7 +2,7 @@ def lintchecks() {
     sh '''
             echo lint checks for ${COMPONENT}
             echo Installing JSlist
-            # sh npm i eslint
+            # sh npm i jslint
             # sh ls -ltr node_modules/jslint/bin/
             # sh node_modules/jslint/bin/jslint.js server.js
             echo performing lint checks for ${COMPONENT}
