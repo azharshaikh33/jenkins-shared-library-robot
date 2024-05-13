@@ -40,15 +40,5 @@ def call() {
                 }
             }
         }
-        stage('Test Cases') {
-            parallel {
-                stage('unit test') {
-                    steps {
-                        // mvn test
-                        sh "echo performing unit test"
-                    }
-                }
-            }
-        }      
-    }
+     }
 }
