@@ -43,6 +43,12 @@ def call() {
                                     sh "echo performing unit test"
                                 }
                             }
+                            stage('Integrity test') {
+                                steps {
+                                    // mvn verify
+                                    sh "echo performing integrity test"
+                                }
+                            }
                         }
                     }      
 
