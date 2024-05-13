@@ -34,8 +34,26 @@ def call() {
                     }
                 }
             }
+                   stage('Test Cases') {
+                    parallel {
+                        stage('Unit Test') {
+                            steps {
+                                sh "Performing unit testing"
+                            }
+                        }
+                            stage('Integration test') {
+                            steps {
+                                sh "Performing Integration testing"
+                            }
+                        }
+                            stage('Functional Testing') {
+                            steps {
+                                sh "Performing Functional testing"
+                            }
+                        }
+                    }
+                }
      
-
             stage('Prepare the artifacts') {
                 when { expression { env.TAG_NAME != null } }
                 steps {
@@ -49,7 +67,6 @@ def call() {
                     sh "echo publish the artifacts"
                 }
             }
-
         }
     }
 }
