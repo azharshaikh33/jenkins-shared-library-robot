@@ -33,12 +33,7 @@ def call() {
                     }
                 }
             }
-            stage('performing npm install') {
-                steps {
-                    sh "echo hai"
-                }
-            }
-        
+       
 
             stage('Prepare the artifacts') {
                 when { expression { env.TAG_NAME != null } }
