@@ -40,18 +40,18 @@ def call() {
                         stage('Unit Test') {
                             steps {
                                 // sh "npm test"
-                                sh "Performing unit testing"
+                                sh "echo Performing unit testing"
                             }
                         }
                             stage('Integration test') {
                             steps {
                                 // sh "npm verify"
-                                sh "Performing Integration testing"
+                                sh "echo Performing Integration testing"
                             }
                         }
                             stage('Functional Testing') {
                             steps {
-                                sh "Performing Functional testing"
+                                sh "echo Performing Functional testing"
                             }
                         }
                     }
