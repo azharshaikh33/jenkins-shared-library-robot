@@ -58,7 +58,18 @@ def call() {
                                 }
                             }
                         }
-                    }      
+                    }
+
+             stage('Checking the version') {
+                when { expression { env.TAG_NAME != null } }
+                steps {
+                   scripts {
+                            env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT/ | grep ${COMPONENT-${TAG_NAME}')
+                            print UPLOAD_STATUS
+                   }
+                }
+            }
+
              stage('Prepare the artifacts') {
                 when { expression { env.TAG_NAME != null } }
                 steps {
