@@ -39,14 +39,20 @@ def call() {
                         parallel {
                             stage('unit test') {
                                 steps {
-                                    // mvn test
+                                    // npm test
                                     sh "echo performing unit test"
                                 }
                             }
                             stage('Integrity test') {
                                 steps {
-                                    // mvn verify
+                                    // npm verify
                                     sh "echo performing integrity test"
+                                }
+                            }
+                            stage('Functional test') {
+                                steps {
+                                    // npm test
+                                    sh "echo functional unit test"
                                 }
                             }
                         }

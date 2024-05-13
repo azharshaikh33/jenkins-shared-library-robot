@@ -34,26 +34,27 @@ def call() {
                 }
             }
                                stage('Test Cases') {
-                    parallel {
-                        stage('Unit Test') {
-                            steps {
-                                // sh "py test"
-                                sh "echo Performing unit testing"
+                        parallel {
+                            stage('unit test') {
+                                steps {
+                                    // py test
+                                    sh "echo performing unit test"
+                                }
+                            }
+                            stage('Integrity test') {
+                                steps {
+                                    // py verify
+                                    sh "echo performing integrity test"
+                                }
+                            }
+                            stage('Functional test') {
+                                steps {
+                                    // py test
+                                    sh "echo functional unit test"
+                                }
                             }
                         }
-                            stage('Integration test') {
-                            steps {
-                                // sh "py verify"
-                                sh "echo Performing Integration testing"
-                            }
-                        }
-                            stage('Functional Testing') {
-                            steps {
-                                sh "echo Performing Functional testing"
-                            }
-                        }
-                    }
-                }
+                    }  
        
 
             stage('Prepare the artifacts') {

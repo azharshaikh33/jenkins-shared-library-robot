@@ -36,26 +36,27 @@ def call() {
                 }
             }
                                stage('Test Cases') {
-                    parallel {
-                        stage('Unit Test') {
-                            steps {
-                                // sh "npm test"
-                                sh "echo Performing unit testing"
+                        parallel {
+                            stage('unit test') {
+                                steps {
+                                    // npm test
+                                    sh "echo performing unit test"
+                                }
+                            }
+                            stage('Integrity test') {
+                                steps {
+                                    // npm verify
+                                    sh "echo performing integrity test"
+                                }
+                            }
+                            stage('Functional test') {
+                                steps {
+                                    // npm test
+                                    sh "echo functional unit test"
+                                }
                             }
                         }
-                            stage('Integration test') {
-                            steps {
-                                // sh "npm verify"
-                                sh "echo Performing Integration testing"
-                            }
-                        }
-                            stage('Functional Testing') {
-                            steps {
-                                sh "echo Performing Functional testing"
-                            }
-                        }
-                    }
-                }
+                    }  
         
 
             stage('Prepare the artifacts') {
