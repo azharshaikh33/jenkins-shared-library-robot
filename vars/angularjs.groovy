@@ -22,14 +22,20 @@ def call() {
                 }
             }
 
-             stage('sonar Check') {
+            stage('sonar Check') {
                 steps {
                     script {
                         env.ARGS="-Dsonar.sources=."
-                        sonarchecks ()
+                        common.sonarchecks ()
                     }
                 }
-             }
+            }
+            stage('performing npm install') {
+                steps {
+                    sh "echo hai"
+                }
+            }
+        
 
             stage('Prepare the artifacts') {
                 when { expression { env.TAG_NAME != null } }
