@@ -13,6 +13,11 @@ def lintchecks() {
 def call() {
     pipeline {
         agent any
+
+        environment { 
+        SONAR_URL = "http://172.31.20.98"
+        SONAR = credentials ('SONAR')
+    }
         stages {
             stage('Lint Check') {
                 steps {
