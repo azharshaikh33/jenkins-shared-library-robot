@@ -63,7 +63,7 @@ def lintchecks() {
             echo performing lint checks completed for ${COMPONENT}
         '''
         }
-        else(env.APP_TYPE == 'maven') {
+        else if(env.APP_TYPE == 'maven') {
         sh '''
             echo lint checks for ${COMPONENT}
             # mvn checkstyle:check
@@ -104,7 +104,7 @@ if(env.UPLOAD_STATUS == "" ) {
                     '''
 
                 }
-                else(env.APP_TYPE == 'angularjs') {
+                else if(env.APP_TYPE == 'angularjs') {
                     sh ''' 
                         echo "frontend is executing"
                         cd static/
