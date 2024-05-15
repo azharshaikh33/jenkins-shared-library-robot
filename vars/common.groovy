@@ -5,6 +5,30 @@ def sonarchecks() {
     sh "echo performing code quality check"
 }
 
+def testcases() {
+    stage('test cases') {
+        def stages = [:]
+
+        stages["Unit testing"] = {
+            echo "started unit testing"
+            echo "completed unit testing"
+            // sh mvn test or npm test
+        }
+        stages["Integration testing"] = {
+            echo "started Integration testing"
+            echo "completed Integration testing"
+            // sh mvn verify or npm verify
+        }
+        stages["Functional testing"] = {
+            echo "started Functional testing"
+            echo "completed Functional testing"
+            // sh mvn verify or npm verify
+        }
+
+        parallel(stages)
+    }
+}
+
 def lintchecks() {
     stage('lint checks') {
         if(env.APP_TYPE == 'angularjs') {
