@@ -1,5 +1,6 @@
 def call() {
     node {
+        git branch: 'main', url: "https://github.com/azharshaikh33/${COMPONENT}.git"
         env.APP_TYPE = 'maven'
         common.lintchecks ()
         env.ARGS="-Dsonar.java.binaries=target/"
