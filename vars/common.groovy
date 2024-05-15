@@ -107,7 +107,7 @@ if(env.UPLOAD_STATUS == "" ) {
                 else(env.APP_TYPE == 'angularjs') {
                     sh ''' 
                         echo "frontend is executing"
-                        cd statuc/
+                        cd static/
                         zip -r ../${COMPONENT}-${TAG_NAME}.zip *
                     '''
 
