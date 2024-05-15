@@ -85,25 +85,30 @@ if(env.UPLOAD_STATUS == "" ) {
             stage('Preparing the artifacts') {
                 if(env.APP_TYPE == 'nodejs') {
                 sh '''
-                npm install
-                echo preparing the artifacts
-                zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+                        npm install
+                        echo "preparing the artifacts"
+                        zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
                 '''
                 }
                 else if(env.APP_TYPE == 'maven') {
                     sh ''' 
-                        echo "yet to type"
+                        mvn clean package
+                        echo "preparing the artifacts"
+                        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+                        zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
                     '''
                 }
                 else if(env.APP_TYPE == 'python') {
                     sh ''' 
-                        echo "yet to type"
+                        zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
                     '''
 
                 }
                 else(env.APP_TYPE == 'angularjs') {
                     sh ''' 
-                        echo "yet to type"
+                        echo "frontend is executing"
+                        cd statuc/
+                        zip -r ../${COMPONENT}-${TAG_NAME}.zip *
                     '''
 
                 }
