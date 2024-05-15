@@ -73,3 +73,41 @@ def lintchecks() {
         }
     }
 }
+
+def artifacts() {
+    stage('Check the release') {
+        env.UPLOAD_STATUS = sh(returnStdout: true, script: 'curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME} || true')
+        print UPLOAD_STATUS
+    }
+
+if(env.UPLOAD_STATUS == "" ) {
+
+            stage('Preparing the artifacts') {
+                if(env.APP_TYPE == 'nodejs') {
+                sh '''
+                npm install
+                echo preparing the artifacts
+                zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+                '''
+                }
+                else if(env.APP_TYPE == 'maven') {
+                    sh ''' 
+                        echo "yet to type"
+                    '''
+                }
+                else if(env.APP_TYPE == 'python') {
+                    sh ''' 
+                        echo "yet to type"
+                    '''
+
+                }
+                else if(env.APP_TYPE == 'angularjs') {
+                    sh ''' 
+                        echo "yet to type"
+                    '''
+
+                }
+            }
+    
+    }
+}
