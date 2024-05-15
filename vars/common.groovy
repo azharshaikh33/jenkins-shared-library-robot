@@ -4,3 +4,46 @@ def sonarchecks() {
     // bash -x quality-gate.sh $(SONAR_PSW) $(SONAR_PSW) $(SONAR_URL) $(COMPONENT)
     sh "echo performing code quality check"
 }
+
+def lintchecks() {
+    stage('lint checks') {
+        if(env.APP_TYPE == 'angularjs') {
+        sh '''
+            echo lint checks for ${COMPONENT}
+            echo Installing JSlist
+            # sh npm i jslint
+            # sh ls -ltr node_modules/jslint/bin/
+            # sh node_modules/jslint/bin/jslint.js server.js
+            echo performing lint checks for ${COMPONENT}
+            echo performing lint checks completed for ${COMPONENT}
+        '''
+        }
+        else if(env.APP_TYPE == 'nodejs') {
+        sh '''
+            echo lint checks for ${COMPONENT}
+            echo Installing JSlist
+            # sh npm i jslint
+            # sh ls -ltr node_modules/jslint/bin/
+            # sh node_modules/jslint/bin/jslint.js server.js
+            echo performing lint checks for ${COMPONENT}
+            echo performing lint checks completed for ${COMPONENT}
+        '''
+        }
+        else if(env.APP_TYPE == 'python') {
+        sh '''
+            echo lint checks for ${COMPONENT}
+            # pylint *.py
+            echo performing lint checks for ${COMPONENT}
+            echo performing lint checks completed for ${COMPONENT}
+        '''
+        }
+        else(env.APP_TYPE == 'maven') {
+        sh '''
+            echo lint checks for ${COMPONENT}
+            # mvn checkstyle:check
+            echo performing lint checks for ${COMPONENT}
+            echo performing lint checks completed for ${COMPONENT}
+        '''
+        }
+    }
+}

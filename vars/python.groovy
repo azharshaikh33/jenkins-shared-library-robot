@@ -1,10 +1,8 @@
-def lintchecks() {
-    sh '''
-            echo lint checks for ${COMPONENT}
-            # pylint *.py
-            echo performing lint checks for ${COMPONENT}
-            echo performing lint checks completed for ${COMPONENT}
-    '''
+env.APP_TYPE = 'python'
+def call {
+    node {
+        common.lintchecks
+    }
 }
 
 def call() {
