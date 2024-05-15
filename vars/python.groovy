@@ -1,5 +1,5 @@
 
-def call {
+def call() {
     node {
         env.APP_TYPE = 'python'
         common.lintchecks
