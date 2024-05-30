@@ -1,4 +1,9 @@
 def call () {
+
+    if (!env.TFDIR) {
+        env.TFDIR = "./"
+    }
+
     node {
         properties([
             parameters([
